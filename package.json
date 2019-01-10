@@ -1,8 +1,8 @@
 {
   "name": "react-hot-cold-app",
   "version": "0.1.0",
-  "private": true,
-  "homepage": "http://ispoljari.github.io/react-hot-cold-app",
+  "private": false,
+  "homepage": "",
   "dependencies": {
     "@material-ui/core": "^3.8.3",
     "react": "^16.7.0",
