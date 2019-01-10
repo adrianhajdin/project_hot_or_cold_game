@@ -1,0 +1,13 @@
+.feedback {
+  border-radius: 5px;
+  padding: 4px;
+  background-color: #ea4335;
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+}
+
+.feedback__value {
+  font-size: 28px;
+  margin: 0 auto;
+}

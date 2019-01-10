@@ -1,0 +1,24 @@
+.author__name {
+  color: black;
+}
+
+.author__social {
+  margin: 15px auto 0 auto;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+}
+
+.author__social img {
+  width: 35px;
+  display: block;
+}
+
+.social__linkedin,
+.social__github {
+  display: inline-block;
+}
+
+.social__github {
+  margin-left: 10px;
+}

@@ -1,0 +1,23 @@
+.progressBar__current {
+  color: black;
+  margin-top: 10px;
+}
+
+.progressBar__history {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-height: 30px;
+  padding: 5px;
+  list-style: none;
+  color: black;
+  font-size: 24px;
+  overflow: -webkit-paged-x;
+}
+
+.progressBar__history li {
+  color: #fff;
+  margin-right: 8px;
+  padding: 2px;
+  border-radius: 4px;
+}
