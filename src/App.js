@@ -1,102 +1,57 @@
 import React, { Component } from 'react';
-import Banner from './components/Banner';
-import Feedback from './components/Feedback';
-import Form from './components/Form';
-import Progress from './components/Progress';
-import Reset from './components/Reset';
-import Info from './components/Info';
-import Author from './components/Author';
 
-import './App.css';
+import { Form, Info, Progress } from './components';
+import { getInitialState, getFeedback } from './util';
+
+import { Grid, Typography, Paper, Divider, Button } from '@material-ui/core';
+
+import './App.css'
 
 class App extends Component {
-  generateRandomNumber = () => Math.floor(Math.random()*100) + 1;
+  state = getInitialState();
 
-  getInitialState = () => {
-    return {
-      actual: this.generateRandomNumber(),
-      guess: undefined,
-      allGuesses: [],
-      attempt: 0,
-      feedbackMessage: 'Waiting...',
-      block: false
-    }
-  }
+  resetGame = () => this.setState(getInitialState())
 
-  state = this.getInitialState();
+  updateAppState = (guess) => {
+    const { actual } = this.state;
 
-  resetGame = () => {
-    this.setState(this.getInitialState());
-  }
-
-  updateAppState = guess => {
-    const absDiff = Math.abs(guess - this.state.actual)
-    const {feedbackMessage, feedbackColor} = this.getFeedback(absDiff);
+    const absDiff = Math.abs(guess - actual);
+    const { feedbackMessage, feedbackColor } = getFeedback(absDiff);
 
     this.setState(prevState => ({
-        guess,
-        allGuesses: [...prevState.allGuesses, {guess, feedbackColor}],
-        attempt: prevState.attempt + 1,
-        feedbackMessage,
-        block: absDiff === 0 ? true : false
-      })
-    );
-  }
-
-  getFeedback = absDiff => {
-    let feedbackMessage;
-    let feedbackColor;
-
-    if (absDiff === 0) {
-      feedbackColor= '#000';
-      feedbackMessage = 'You Won! Reset the game to play again.';
-    } else if (absDiff < 4 && absDiff !== 0) {
-      feedbackColor= '#ff5722';
-      feedbackMessage = 'Extremely Hot!';
-    } else if (absDiff >= 4 && absDiff < 10) {
-      feedbackColor= '#ff9800';
-      feedbackMessage = 'Hot';
-    } else if (absDiff >= 10 && absDiff < 20) {
-      feedbackColor= '#ffeb38';
-      feedbackMessage = 'Warm';
-    } else {
-      feedbackColor= '#5bc0de';
-      feedbackMessage = 'Cold';
-    }
-
-    return {
+      guess,
+      allGuesses: [...prevState.allGuesses, { guess, feedbackColor }],
+      attempt: prevState.attempt + 1,
       feedbackMessage,
-      feedbackColor
-    }
+      block: absDiff === 0,
+    }));
   }
 
   render() {
-    const guessList = this.state.allGuesses.map((item, index) =>
-      <li key={index} className={`guess-${index}`} style={{backgroundColor: item.feedbackColor}}>
+    const { allGuesses, feedbackMessage, block, attempt, show } = this.state;
+
+    const guessList = allGuesses.map((item, index) => (
+      <li key={index}>
         <span>{item.guess}</span>
       </li>
-    );
+    ));
 
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-xs-12">
-            <header role="banner">
-              <Banner />
-            </header>
-            <main role="main">
-              <Feedback feedback={this.state.feedbackMessage}/>
-              <Form block = {this.state.block} returnGuessToApp={value => this.updateAppState(value)}/>
-              <Progress attempt={this.state.attempt} guess={this.state.guess} guessList={guessList}/>
-              <Reset resetGame = {this.resetGame}/>
-              <Info />
-            </main>
-            <footer role="contentinfo">
-              <Author />
-            </footer>
-          </div>
-        </div>
-      </div>
+      <Grid style={{height: '100vh'}} justify="center" alignItems="center" container>
+        <Grid item xs={3}>
+          <Paper style={{padding: '50px'}} elevation={6}>
+            <Typography align="center" variant="h2" gutterBottom>HOT or COLD</Typography>
+            <Divider style={{margin: '20px 0'}}/>
+            <div className={`feedback ${feedbackMessage[0].toLowerCase()}`}>
+              <h2 className="feedback-text">{feedbackMessage}</h2>
+            </div>
+            <Form block={block} returnGuessToApp={value => this.updateAppState(value)} />
+            <Progress feedbackMessage={feedbackMessage} attempt={attempt} guessList={guessList} />
+            <Button style={{marginBottom: '15px'}} fullWidth variant="contained" color="primary"onClick={this.resetGame}>Reset Game</Button>
+            <Info show={show} onClose={this.handleClose} />
+          </Paper>
+        </Grid>
+      </Grid>
     );
   }
 }
