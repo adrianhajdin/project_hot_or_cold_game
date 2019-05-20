@@ -35,4 +35,4 @@ export const getFeedback = (absDiff) => {
     feedbackMessage,
     feedbackColor,
   };
-}
+};

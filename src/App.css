@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     height: 100vh;
 }
 
@@ -9,40 +10,45 @@ html, body {
     display: flex;
     align-items: center;
     min-height: 50px;
-  }
+}
 
-  .y{
-      background-color: #f2ff00
-   }
-  .e{
-      background-color: #ff0000
-   }
-  .h{
-      background-color: #ff6e00
-   }
-  .d{
-      background: -webkit-linear-gradient(right, #1e5799 0%,#ff3033 0%,#ff3033 38%,#207cca 70%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(to left, #1e5799 0%,#ff3033 0%,#ff3033 38%,#207cca 70%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        color: white;
-        font-family:  Times, serif;
-        letter-spacing: px;
-    }
-    .w{
-        background-color: #ffd000;
-    }
-  .c{
-      background-color: #68dcff
-   }
+.y {
+    background-color: #f2ff00
+}
+
+.e {
+    background-color: #ff0000
+}
+
+.h {
+    background-color: #ff6e00
+}
+
+.d {
+    background: -webkit-linear-gradient(right, #1e5799 0%, #ff3033 0%, #ff3033 38%, #207cca 70%, #7db9e8 100%);
+    background: linear-gradient(to left, #1e5799 0%, #ff3033 0%, #ff3033 38%, #207cca 70%, #7db9e8 100%);
+    color: white;
+    font-family: Times, serif;
+    letter-spacing: px;
+}
+
+.w {
+    background-color: #ffd000;
+}
+
+.c {
+    background-color: #68dcff
+}
 
 
-  .feedback-text {
+.feedback-text {
     font-size: 28px;
     margin: 0 auto;
     text-align: center;
-  }
+}
 
 
 body {
-    background: -webkit-linear-gradient(left, #1e5799 0%,#ff3033 0%,#ff3033 38%,#207cca 70%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, #1e5799 0%,#ff3033 0%,#ff3033 38%,#207cca 70%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: -webkit-linear-gradient(left, #1e5799 0%, #ff3033 0%, #ff3033 38%, #207cca 70%, #7db9e8 100%);
+    background: linear-gradient(to right, #1e5799 0%, #ff3033 0%, #ff3033 38%, #207cca 70%, #7db9e8 100%);
 }
