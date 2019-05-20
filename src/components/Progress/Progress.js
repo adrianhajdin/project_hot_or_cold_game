@@ -1,7 +1,5 @@
 import React from 'react';
 
-import {  Divider } from '@material-ui/core';
-
 import './Progress.css';
 
 const Progress = ({ attempt, guessList }) => (
